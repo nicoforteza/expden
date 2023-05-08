@@ -1,13 +1,11 @@
-from xrspatial.focal import focal_stats, apply, _calc_sum
+from xrspatial.focal import apply, _calc_sum
 from xrspatial.convolution import circle_kernel
 from xarray.core.dataarray import DataArray
 from geocube.api.core import make_geocube
 import numpy as np
 import pandas as pd
-import rioxarray
 import xarray
 import geopandas
-import tempfile
 from typing import Optional
 
 
@@ -18,7 +16,7 @@ def experienced_density(raster: DataArray,
 
     # do some sanity checks, such as testing whether
     # both raster and vector have the same crs
-    # TODO: crs sanity checks
+    vector = vector.to_crs(raster.rio.crs.to_epsg())
 
     # set no data equal to zero
     # DENOMINATOR =====
@@ -72,4 +70,3 @@ def experienced_density(raster: DataArray,
     vector = pd.merge(vector, expdendf, on='id').drop(["pop_num", 'pop_den'], axis=1)
 
     return vector
-
