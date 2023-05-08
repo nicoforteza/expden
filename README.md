@@ -1,10 +1,23 @@
-
-# ☢️ WORK IN PROGRESS ❗️
-
 # About
 
 `expden` is a library that provides functions to calculate the 
 experienced density, using a modern stack of GIS libraries in Python.
+
+### Basic Usage
+
+To calculate experienced density you just need a raster and a vector file.
+Important!
+
+```python
+import rioxarray
+import geopandas
+import expden as xp
+
+grid = rioxarray.open_rasterio(r"my_raster.tiff")
+vector = geopandas.read_file("my_vector")
+expden_vector = xp.experienced_density(raster=grid, vector=vector, radius=10)
+expden_vector.to_file("exp.geojson")
+```
 
 #### What is Experienced Density?
 
@@ -32,14 +45,24 @@ Go and see the docs for more!
 
 # Installation and Requirements
 
-For the installation of the package, you need a `Python >= 3.9.16` version. 
+For the installation of the package, you need a `Python >= 3.9.16` version. I recommend using an isolated virtual environment. 
 Please, take into account that you may need to install other GIS libraries in your system, such as GDAL or PROJ4.
 
-To install the latest stable version of the library, please use `pip:
+To install the latest stable version of the library, please use `pip`:
 
 ```
 pip install expden
 ```
+
+The main dependencies of the project include `geopandas`, `xarray-spatial`, `rioxarray` and `geocube`. 
+
+# TO DO List
+
+- [x] First working version
+- [ ] Add documentation
+- [ ] Add examples
+- [ ] Parallel version of the main funcionality
+
 
 # References
 
