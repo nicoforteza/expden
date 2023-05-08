@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "expden"
-version = "0.1.0"
+version = "0.1.1"
 description = "Library to compute the experienced density"
 authors = ["Nico Forteza  <nicoforteza@gmail.com>"]
 maintainers = ["Nico Forteza  <nicoforteza@gmail.com>"]
