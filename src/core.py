@@ -73,24 +73,3 @@ def experienced_density(raster: DataArray,
 
     return vector
 
-
-if __name__ == '__main__':
-
-
-    """
-    grid = rioxarray.open_rasterio(r"../demos/data/esp_ppp_2020_UNadj.tiff", chunks='auto').sel(band=1)
-    vector = geopandas.read_file(r"../demos/data/NUTS_RG_01M_2021_3035.geojson")
-    vector = vector[(vector.LEVL_CODE == 3) & (vector.CNTR_CODE == 'ES')]
-    vector2 = experienced_density(raster=grid, vector=vector, radius=100)
-    vector2.to_file(r"exp.geojson")
-    """
-    df = geopandas.read_file(
-        r"/Users/nicoforteza/Desktop/urban_bde/data/secciones-censales/secciones-censales_pop_2020.geojson")
-    df= df.drop(['CDIS', 'CMUN', 'CPRO', 'CCA', 'CUDIS',
-       'CLAU2', 'NPRO', 'NCA', 'CNUT0', 'CNUT1', 'CNUT2', 'CNUT3', 'NMUN', "mean_pop", "cells_pop", "sum_pop"], axis=1)
-    print(df.columns)
-    print(df.shape)
-    df["density"] = df["density"].astype(np.dtype('float32'))
-    df["expden"] = df["expden"].astype(np.dtype('float32'))
-    df.to_file(r"/Users/nicoforteza/Desktop/expden/demos/data/secs.geojson")
-
