@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "expden"
-version = "0.1.2"
+version = "0.1.3"
 description = "Library to compute the experienced density"
 authors = ["Nico Forteza  <nicoforteza@gmail.com>"]
 maintainers = ["Nico Forteza  <nicoforteza@gmail.com>"]
@@ -8,7 +8,7 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "3.9.16"
+python = "^3.9.0"
 numba = "0.56.4"
 geopandas = "0.12.1"
 xarray-spatial = "0.3.5"
